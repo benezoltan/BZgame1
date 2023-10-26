@@ -1,4 +1,11 @@
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card"),
+    timeTag = document.querySelector(".time b"),
+    flipsTag = document.querySelector(".flips b"),
+    refreshBtn = document.querySelector(".details button");
+
+    let maxTime = 60;
+    let timeLeft = maxTime;
+    let flips = 0;
 
 let matched = 0;
 let cardOne, cardTwo;
@@ -8,6 +15,10 @@ function flipCard({target: clickedCard}) {
     if(cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add("flip");
         if(!cardOne) {
+            /*
+            flips++;
+            flipsTag.innerText = flips;
+            */
             return cardOne = clickedCard;
         }
         cardTwo = clickedCard;
@@ -60,6 +71,8 @@ function shuffleCard() {
 }
 
 shuffleCard();
+
+// refreshBtn.addEventListener("click", shuffleCard);
     
 cards.forEach(card => {
     card.addEventListener("click", flipCard);

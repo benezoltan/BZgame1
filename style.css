@@ -19,7 +19,7 @@ body{
   background: #F8F8F8;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-.cards, .card, .view{
+.cards, .card, .view, .details, p {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,6 +85,33 @@ body{
 }
 .card.flip .front-view{
   transform: rotateY(180deg);
+}
+
+.details p{
+  font-size: 18px;
+  height: 17px;
+  padding-right: 18px;
+  border-right: 1px solid #ccc;
+}
+.details p span{
+  margin-left: 8px;
+}
+.details p b{
+  font-weight: 500;
+}
+.details button{
+  cursor: pointer;
+  font-size: 14px;
+  color: #6563ff;
+  border-radius: 4px;
+  padding: 4px 11px;
+  background: #fff;
+  border: 2px solid #6563ff;
+  transition: 0.3s ease;
+}
+.details button:hover{
+  color: #fff;
+  background: #6563ff;
 }
 
 @media screen and (max-width: 700px) {
