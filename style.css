@@ -19,6 +19,17 @@ body{
   background: #F8F8F8;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
+
+.msg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: red;
+  border-radius: 4px;
+  padding: 4px 11p
+}
+
 .cards, .card, .view, .details, p {
   display: flex;
   align-items: center;
@@ -90,6 +101,7 @@ body{
 .details p{
   font-size: 18px;
   height: 17px;
+  padding-left: 10px;
   padding-right: 18px;
   border-right: 1px solid #ccc;
 }

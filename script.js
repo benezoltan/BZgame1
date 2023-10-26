@@ -1,24 +1,43 @@
 const cards = document.querySelectorAll(".card"),
     timeTag = document.querySelector(".time b"),
     flipsTag = document.querySelector(".flips b"),
-    refreshBtn = document.querySelector(".details button");
+    refreshBtn = document.querySelector(".details button"),
+    msgBox =  document.querySelector(".msg");
 
-    let maxTime = 60;
-    let timeLeft = maxTime;
-    let flips = 0;
+
+let maxTime = 120;
+let timeLeft = maxTime;
+let flips = 0;
 
 let matched = 0;
-let cardOne, cardTwo;
+let cardOne, cardTwo, timer;
 let disableDeck = false;
+let isPlaying = false;
+
+function initTimer() {
+    if(timeLeft <= 0) {
+        msgBox.innerText = 'Lejárt az idő!';
+        cards.forEach(card => {
+            card.removeEventListener("click", flipCard);
+        });
+        return clearInterval(timer);
+    }
+    timeLeft--;
+    timeTag.innerText = timeLeft;
+}
 
 function flipCard({target: clickedCard}) {
+    if(!isPlaying) {
+        isPlaying = true;
+        timer = setInterval(initTimer, 1000);
+    }
     if(cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add("flip");
         if(!cardOne) {
-            /*
+            //
             flips++;
             flipsTag.innerText = flips;
-            */
+            //
             return cardOne = clickedCard;
         }
         cardTwo = clickedCard;
@@ -57,6 +76,20 @@ function matchCards(img1, img2) {
 }
 
 function shuffleCard() {
+    //reset
+     timeLeft = maxTime;
+     timeTag.innerText = timeLeft;
+     isPlaying=false;
+     clearInterval(timer);
+     flips = 0;
+     flipsTag.innerText = flips;
+     msgBox.innerText='';
+     disableDeck = true;
+     cards.forEach(card => {
+        card.addEventListener("click", flipCard);
+    });
+     
+
     matched = 0;
     disableDeck = false;
     cardOne = cardTwo = "";
@@ -72,7 +105,8 @@ function shuffleCard() {
 
 shuffleCard();
 
-// refreshBtn.addEventListener("click", shuffleCard);
+// új játék gomb
+refreshBtn.addEventListener("click", shuffleCard);
     
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
