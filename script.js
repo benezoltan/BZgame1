@@ -5,7 +5,7 @@ const cards = document.querySelectorAll(".card"),
     msgBox =  document.querySelector(".msg");
 //példa
 
-let maxTime = 120;
+let maxTime = 90;
 let timeLeft = maxTime;
 let flips = 0;
 
