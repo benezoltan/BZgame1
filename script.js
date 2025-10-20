@@ -3,7 +3,7 @@ const cards = document.querySelectorAll(".card"),
     flipsTag = document.querySelector(".flips b"),
     refreshBtn = document.querySelector(".details button"),
     msgBox =  document.querySelector(".msg");
-
+//példa
 
 let maxTime = 120;
 let timeLeft = maxTime;
